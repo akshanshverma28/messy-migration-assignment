@@ -1,4 +1,4 @@
-app.py
+#app.py
 from flask import Flask
 from routes.user_routes import register_routes
 import sqlite3
