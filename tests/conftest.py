@@ -6,7 +6,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../s
 
 import pytest
 import sqlite3
-from src.app import app as flask_app  # ✅ Import your Flask app from src
+from src.app import app as flask_app  
 
 @pytest.fixture
 def app():
