@@ -3,16 +3,16 @@
 from flask import jsonify
 
 def render_home():
-    print("✅ render_home() was called")
+    print(" render_home() was called")
     return "User Management System"
 
 def render_users(users):
     # users is expected to be a list of sqlite3.Row
-    return jsonify([dict(user) for user in users])  # ✅ fixed
+    return jsonify([dict(user) for user in users])  
 
 def render_user(user):
     if user:
-        return jsonify(dict(user))  # ✅ convert Row to dict
+        return jsonify(dict(user))  
     else:
         return "User not found", 404
 
@@ -39,7 +39,7 @@ def render_login_response(user):
         return jsonify({"status": "failed"}), 401
 
 def render_exception(e):
-    print(f"❌ Exception occurred: {e}")
+    print(f" Exception occurred: {e}")
     return jsonify({"error": str(e)}), 500
 
 def render_server_error():
