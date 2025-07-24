@@ -35,7 +35,7 @@
 - Views consistently return meaningful HTTP status codes (400, 401, 404, 500)
 
 ###  Code Reusability
-- Moved reusable logic (e.g., request parsing, error formatting) into `utils.py` and `views.py`
+- Moved reusable logic (e.g., request parsing, error formatting) into `user_utils.py` and `views.py`
 - Replaced repeated `try-except` logic with decorator
 
 ###  Testing
