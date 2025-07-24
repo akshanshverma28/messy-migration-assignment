@@ -1,4 +1,5 @@
-# views.py
+
+
 from flask import jsonify
 
 def render_home():
@@ -6,11 +7,12 @@ def render_home():
     return "User Management System"
 
 def render_users(users):
-    return jsonify(users)
+    # users is expected to be a list of sqlite3.Row
+    return jsonify([dict(user) for user in users])  # ✅ fixed
 
 def render_user(user):
     if user:
-        return jsonify(user)
+        return jsonify(dict(user))  # ✅ convert Row to dict
     else:
         return "User not found", 404
 
@@ -31,11 +33,13 @@ def render_missing_name():
 
 def render_login_response(user):
     if user:
-        return jsonify({"status": "success", "user_id": user[0]})
+        # user is a Row — convert to dict for clarity or index safely
+        return jsonify({"status": "success", "user_id": user["id"]})
     else:
         return jsonify({"status": "failed"}), 401
 
 def render_exception(e):
+    print(f"❌ Exception occurred: {e}")
     return jsonify({"error": str(e)}), 500
 
 def render_server_error():
